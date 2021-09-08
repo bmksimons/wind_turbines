@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Abstract Photos</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Offshore wind</h1>
+        <div class="artist">Om kunstneren
+            <div id="artistInfo">
+                <p2>Kunstneren er en engasjert klimaaktivist og kjemper for fornybar energi.
+                    Dette har hun gjort over flere tiår gjennom ulik type kunst, deriblant grafisk tegning, oljemalerier og videofilmer.
+                    Disse to verkene har hun lagd for å fremme forskning innen havvind.
+                </p2>
+            </div>
+          </div>
+    </header>
+    <main>
+        <ul class=photos>
+            <h2>A SVG wind-turbine</h2>
+            <div>
+                <svg id="svg" width="1165" height="824" viewBox="0 0 1165 824" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="wind_turbine">
+                        <g id="cloud" transform="translate(0, 0)">
+                            <circle id="Ellipse 2" cx="-77" cy="173" r="45" fill="white"/>
+                            <circle id="Ellipse 4" cx="-91" cy="238" r="45" fill="white"/>
+                            <circle id="Ellipse 5" cx="-21" cy="238" r="45" fill="white"/>
+                            <circle id="Ellipse 3" cx="-1" cy="185" r="45" fill="white"/>
+                            <animateTransform attributeName="transform" from="-91" to="1300" type="translate" begin="0s" dur="18s" repeatCount="indefinite" />
+                            </g>
+                    <g id="stand">
+                    <path id="Polygon 1" d="M601.5 283L652.162 649.75H550.838L601.5 283Z" fill="#3D4273"/>
+                    </g>
+                    <g id="turbine">
+                    <ellipse id="Ellipse 1" cx="601.5" cy="263.5" rx="20.5" ry="19.5" fill="#CDDFF4"/>
+                    <path id="Polygon 2" d="M601.5 79L612.325 238.75H590.675L601.5 79Z" fill="#3D4273"/>
+                    <path id="Polygon 4" d="M422.058 326.645L570.331 265.78L578.229 290.586L422.058 326.645Z" fill="#3D4273"/>
+                    <path id="Polygon 3" d="M773.211 343.262L622.4 289.229L632.141 267.35L773.211 343.262Z" fill="#3D4273"/>
+                    </g>
+                    <g id="ground">
+                    <path id="Vector" d="M1102.44 651.442C1093.88 682.661 1075.31 710.205 1049.57 729.839C1023.83 749.473 992.361 760.109 959.99 760.112H206.92C172.115 760.091 137.996 750.424 108.354 732.183C78.7114 713.943 54.7048 687.843 39 656.782C39 656.782 148.15 505.802 431.62 604.442C666.96 686.332 775.51 608.892 805.62 580.232C808.879 577.143 812.73 574.746 816.941 573.185C821.152 571.625 825.635 570.933 830.12 571.152C887.79 573.882 1087.56 587.862 1102.47 651.422L1102.44 651.442Z" fill="url(#paint0_linear)"/>
+                    </g>
+                    <rect x="1" y="1" width="1164" height="823" stroke="black"/>
+                    </g>
+                    <defs>
+                    <linearGradient id="paint0_linear" x1="570.75" y1="665.832" x2="570.735" y2="760.112" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#8ABFFD"/>
+                    <stop offset="1" stop-color="#1A5DAB"/>
+                    </linearGradient>
+                    </defs>
+                    </svg>
+            </div>
+            <h2>A html canvas wind-turbine</h2>
+            <div>
+                <canvas id="canvas" width="1165px", height="824px">
+                    Your brower does not support HTML canvas.
+                </canvas>
+            </div>
+        </ul>
+        <div class=documentation style="opacity: 0;">
+            <h3>Dokumentasjon</h3>
+            <p>
+                Jeg har brukt CSS-grid til å dele inn siden i en kolonne med 3 rader: header, main og footer. Hvert html-element har blitt tildelt
+                hvilken rad det tilhører. CSS-grid er ideelt for to-dimensjonale layouter, som jeg ikke endte opp med å ha. Allikavel var det den letteste
+                løsningen fordi det gjorde det lettere å manuelt si hvilke element som skulle hvor. Videre har jeg brukt Flexbox til å dele inn main-området
+                i to delområder, et til hvert bilde. Jeg kunne brukt CSS-grid til dette, men her var flexbox en lettere løsning med bedre browser støtte.
+                Flexbox fordelte de to bildene jevnt over main-området uten at det krevdes noe mer spesifiseringer som trengtes i CSS-grid. Å kombinere CSS-grid og flexbox viste
+                seg å være den letteste måten å dele inn siden slik jeg ville. I tillegg brukte jeg CSS-grid på liknende måte i dokumentasjonen,
+                med fem rader til hvert emne som skulle skrives om. For å formatere kildene i nederste rad brukte jeg flexbox for å lage en ryddig layout med tre kolonner. 
+            </p>
+            <hr>
+            <p>
+                Det første bilde er laget med SVG. Jeg lagde bildet opprinnelig i figma, og eksporterte det som en SVG fil som jeg limte inn i HTML-dokumentet.
+                Animasjonen på skyen ble skrevet rett inn i HTML-filen, med "animateTransform" som flytter skyen i x-retning. I CSS har jeg brukt @keyframes 
+                til å få vindmøllen til å rotere. Dette er ikke gjort i canvas-bildet, men jeg gjorde det her for å prøve ut ulike måter å skape animasjon i SVG.
+                I bildet laget med HTML canvas er koden hardkodet i javascript i filen canvas.js. For å skape animasjonen av skyen
+                har jeg brukt "requestAnimationFrame" til å kalle på en draw() funksjon kontinuerlig. Draw() tegner bildet om igjen hele tiden, med små endringer på skyen for å få
+                det til å se ut som den beveger seg. Ved hver nye canvas-tegning øker x-verdien til sentrum av sirklene som tilsammen
+                lager skyen. Når skyen er i enden av canvas'et blir x-verdien nullstilt og animasjonen går på nytt. 
+            </p>
+            <hr>
+            <p>
+                Jeg har brukt JQuery til å endre farge på midten av SVG turbinen. Når man klikker på midten av turbinen bytter den farge,
+                og trykker man igjen vil den bytte tilbake. Her fikk jeg bruk for ID'en fra SVG for å identifisere sirkelen som skal trykkes på.
+            </p>
+            <hr>
+            <p>
+                Nettsiden har blitt testet i nettleserne Google Chrome og Microsoft Edge for å se at den fungerer i flere nettlesere. Videre har jeg 
+                gjort siden skalerbar i den form at dokumentasjonen og headeren vil minke og øke i størrelse når man endrer vindusstørrelsen. 
+            </p>
+            <hr>
+            <div class=sources>
+            <div class=sourceList>
+                <ul>
+                    <p>Videoer:</p>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=RSIclWvNTdQ">CSS-grid vs Flexbox</a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=emFMHH2Bfvo">Basic SVG</a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=gWai7fYp9PY&t=631s">SVG animasjon</a>
+                    </li>
+                </ul>
+            </div>
+            <div class=sourceList>
+                <ul>
+                    <p>Eksempelkode:</p>
+                    <li>
+                        <a href="https://www.w3schools.com/css/css_tooltip.asp">CSS Tooltip example</a>
+                    </li>
+                    <li>
+                        <a href="https://stackoverflow.com/questions/55878979/how-to-create-an-overlay-on-click-of-a-button">Overlay click button</a>
+                    </li>
+                    <li>
+                        <a href="https://stackoverflow.com/questions/9880279/how-do-i-add-a-simple-onclick-event-handler-to-a-canvas-element">Canvas event handler</a>
+                    </li>
+                    <li>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/isPointInPath">Canvas .pointInPath</a>
+                    </li>
+                    <li>
+                        <a href="http://jsfiddle.net/sureshpattu/tuneof2f/">Bevegelse av sky SVG</a>
+                    </li>
+                </ul>
+            </div>
+            <div class=sourceList>
+                <ul>
+                    <p>Generelle kilder:</p>
+                    <li>
+                        <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Adding_vector_graphics_to_the_Web">SVG vektorer</a>
+                    </li>
+                    <li>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient">Lineær gradient SVG</a>
+                    </li>
+                    <li>
+                        <a href="https://www.w3schools.com/html/html5_canvas.asp">Basic HTML canvas</a>
+                    </li>
+                    <li>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes">Tegne med canvas</a>
+                    </li>
+                    <li>
+                        <a href="https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript/Move_the_ball">HTML canvas animasjon</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <button id=showDocumentation onclick="toggleDocumentation()">Vis/skjul dokumentasjon</button>
+        </div>
+    </footer>
+    <script src="app.js"></script>
+    <script src="canvas.js"></script>
+    <noscript>You need to enable JavaScript to view the full site.</noscript>
+</body>
+</html>

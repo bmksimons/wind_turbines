@@ -1,0 +1,152 @@
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Bahnschrift Light;
+    display: grid;
+    grid-template-rows: 10% auto 10%;
+    grid-template-areas: "header"
+                         "main"
+                         "footer";
+    height: 900px;
+}
+
+header,
+main,
+footer {
+    padding-bottom: 30px;
+    line-height: 25px;
+    word-spacing: 3px;
+    text-align: center;
+    color: #fff;
+}
+
+header {
+    grid-area: header;
+    background: linear-gradient( 135deg, #2f8fcf69 10%, #06438aad 100%);
+    border-radius: 0 0 85% 85% / 15%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+}
+
+main{
+    grid-area: main;
+    background: #dae7eb;
+}
+
+.artist{
+    grid-area: header;
+    position: fixed;
+    padding-left: 8px;
+    text-align: left;
+    top: 10px;
+    font-size: 18px;
+    color: rgb(94, 94, 94);
+}
+
+#artistInfo{
+    padding: 5px;
+    font-size: 15px;
+    /*makes the text box edges round*/
+    border-radius: 6px;
+    background: #ffffcc;
+    color: grey;
+    visibility: hidden;
+
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    height: 255px;
+    width: 200px;
+    text-align: left;
+}
+
+.artist:hover #artistInfo{
+    visibility: visible;
+}
+
+.photos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
+    /*vet ikke om jeg trenger z-index her*/
+    z-index: 0.5;
+}
+
+.documentation {
+    grid-area: main;
+    padding: 20px;
+    display: none;
+    overflow-y: auto;
+    position: fixed;
+    width: 70%;
+    height: 70%;
+    top: 13%;
+    text-align: center;
+    background-color: rgb(94, 94, 94);
+    border-radius: 10px;
+    left: 15%;
+    font-size: 14px;
+    transition: opacity .2s ease-out;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas: "grid"
+                         "svg_canvas"
+                         "jquery"
+                         "testing"
+                         "sources";
+}
+
+/*This code is inspired by the video named "CSS-grid vs Flexbox" in the source list*/
+.sources {
+    grid-area: sources;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: center;
+    align-items: top;
+    text-align: left;
+}
+
+.sourceList {
+    margin: 0 20px;
+}
+
+#showDocumentation{
+    grid-area: footer;
+    text-align: center;
+    position: absolute;
+    border-radius: 5px;
+    left: 47%;
+    height: 50px;
+    width: 150px;
+    border:thick;
+    color: black;
+    background-color: #fcc1d5b4; 
+}
+
+#showDocumentation:focus { outline-style: none; }
+
+footer {
+    background: #dae7eb;
+    grid-area: footer;
+}
+
+#turbine{
+    animation: turbine_ 2s infinite linear;
+    transform-origin: 51% 70%;
+    transform-box: fill-box;
+}
+
+@keyframes turbine_{
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
